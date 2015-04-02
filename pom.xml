@@ -22,6 +22,7 @@
 		<spring-framework.version>4.0.6.RELEASE</spring-framework.version>
 		<jackson.version>2.4.2</jackson.version>
 		<jason.version>20141113</jason.version>
+		<apache-http-client.version>4.3.6</apache-http-client.version>
 	</properties>
 
 	<build>
@@ -127,6 +128,11 @@
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 			<version>${jason.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${apache-http-client.version}</version>
 		</dependency>
 	</dependencies>
 </project>
