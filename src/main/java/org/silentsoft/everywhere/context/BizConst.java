@@ -7,6 +7,8 @@ public class BizConst {
 	
 	public static final String PATH_META = File.separator + "conf" + File.separator + "META.ini";
 	
+	public static final String DEFAULT_USER_ID = "Silentsoft";
+	
 	public static final String INI_SECTION_SERVER = "SERVER";
 	public static final String INI_SERVER_URI = "URI";
 	public static final String INI_SERVER_ROOT = "ROOT";
@@ -17,4 +19,5 @@ public class BizConst {
 	
 	public static final String KEY_USER_ID = "KEY_USER_ID";
 	public static final String KEY_USER_NM = "KEY_USER_NM";
+	
 }
