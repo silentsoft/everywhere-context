@@ -16,6 +16,7 @@ public class BizConst {
 	public static final String EVENT_VIEW_REGISTER = "EVENT_VIEW_REGISTER";
 	public static final String EVENT_VIEW_LOGIN = "EVENT_VIEW_LOGIN";
 	public static final String EVENT_VIEW_MAIN = "EVENT_VIEW_MAIN";
+	public static final String EVENT_VIEW_MODIFY = "EVENT_VIEW_MODIFY";
 	
 	public static final String KEY_USER_ID = "KEY_USER_ID";
 	public static final String KEY_USER_NM = "KEY_USER_NM";
