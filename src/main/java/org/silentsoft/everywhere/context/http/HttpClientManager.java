@@ -3,20 +3,26 @@ package org.silentsoft.everywhere.context.http;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
+import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.util.EntityUtils;
-import org.silentsoft.everywhere.context.host.EverywhereException;
+import org.silentsoft.core.CommonConst;
 import org.silentsoft.core.util.JSONUtil;
+import org.silentsoft.everywhere.context.host.EverywhereException;
+import org.silentsoft.everywhere.context.model.pojo.FilePOJO;
 
 public class HttpClientManager {
 	private static enum RequestType {
 		GET,
-		POST
+		POST,
+		MULTIPART
 	};
 	
 	public static <T> T doGet(String uri, Class<T> returnType) throws EverywhereException {
@@ -25,6 +31,10 @@ public class HttpClientManager {
 	
 	public static <T> T doPost(String uri, Object param, Class<T> returnType) throws EverywhereException {
 		return doAction(uri, param, returnType, RequestType.POST);
+	}
+	
+	public static <T> T doMultipart(String uri, Object param, Class<T> returnType) throws EverywhereException {
+		return doAction(uri, param, returnType, RequestType.MULTIPART);
 	}
 	
 	private static <T> T doAction(String uri, Object param, Class<T> returnType, RequestType requestType) throws EverywhereException {
@@ -47,6 +57,27 @@ public class HttpClientManager {
 				{
 					httpPost = new HttpPost(uri);
 					httpPost.setEntity(new StringEntity(JSONUtil.ObjectToString(param)));
+					httpResponse = HttpClientFactory.getHttpClient().execute(httpPost);
+					break;
+				}
+				case MULTIPART:
+				{
+					MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
+					multipartEntityBuilder.setCharset(Charset.forName("UTF-8"));
+					
+					if (param instanceof FilePOJO) {
+						FilePOJO filePOJO = (FilePOJO)param;
+						
+						multipartEntityBuilder.addBinaryBody("binary", filePOJO.getInputStream(), ContentType.APPLICATION_OCTET_STREAM,
+								String.format("%s%s%s", filePOJO.getName(), CommonConst.DOT, filePOJO.getExtension()));
+						
+						filePOJO.setInputStream(null);
+						
+						multipartEntityBuilder.addTextBody("json", JSONUtil.ObjectToString(filePOJO));
+					}
+					
+					httpPost = new HttpPost(uri);
+					httpPost.setEntity(multipartEntityBuilder.build());
 					httpResponse = HttpClientFactory.getHttpClient().execute(httpPost);
 					break;
 				}

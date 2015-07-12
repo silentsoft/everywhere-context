@@ -32,4 +32,8 @@ public class RESTfulAPI {
 	public static <T> T doPost(String api, Object param, Class<T> returnType) throws EverywhereException {
 		return HttpClientManager.doPost(getURI(api), param, returnType);
 	}
+	
+	public static <T> T doMultipart(String api, Object param, Class<T> returnType) throws EverywhereException {
+		return HttpClientManager.doMultipart(getURI(api), param, returnType);
+	}
 }
