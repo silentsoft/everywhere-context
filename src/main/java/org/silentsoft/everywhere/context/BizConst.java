@@ -21,5 +21,6 @@ public class BizConst {
 	public static final String KEY_USER_ID = "KEY_USER_ID";
 	public static final String KEY_USER_NM = "KEY_USER_NM";
 	public static final String KEY_USER_EMAIL = "KEY_USER_EMAIL";
+	public static final String KEY_USER_FNL_ACCS_DT = "KEY_USER_FNL_ACCS_DT";
 	
 }

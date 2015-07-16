@@ -1,95 +1,100 @@
 package org.silentsoft.everywhere.context.model.table;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 public class TbmSmUserDVO {
 	
 	private String userId;
-	
+
 	private String userPwd;
-	
+
 	private String userNm;
-	
+
 	private String engUserNm;
-	
+
 	private String empNo;
-	
+
 	private String emailAddr;
-	
+
 	private String singleId;
-	
+
 	private String deptCode;
-	
+
 	private String deptNm;
-	
+
 	private String engDeptNm;
-	
+
 	private String firmTel;
-	
+
 	private String mobileTel;
-	
+
 	private String fnlAccsDt;
-	
+
 	private String fnlAccsIp;
-	
+
 	private String acctStatusCode;
-	
+
 	private String acctStatusUpdDt;
-	
+
 	private String langCode;
-	
-	private String pwdErrCnt;
-	
+
+	private BigDecimal pwdErrCnt;
+
 	private String userIdValidDt;
-	
+
 	private String userTypeCode;
-	
+
 	private String secuPldgDt;
-	
+
 	private String gbmCode;
-	
+
 	private String corpCode;
-	
+
 	private String fctCode;
-	
+
 	private String mfgGrpCode;
-	
+
 	private String mfgTeamCode;
-	
+
 	private String mfgPartCode;
-	
+
 	private String outsVendCode;
 
 	private String delYn;
-	
+
 	private String useYn;
-	
-	private String etlUpdDt;
-	
+
+	private Date etlUpdDt;
+
 	private String fstRegDt;
-	
+
 	private String fstRegerId;
-	
+
 	private String fnlUpdDt;
-	
+
 	private String fnlUpderId;
-	
+
 	private String pwdValidDt;
-	
+
+	private String encptUserId;
+
 	private String psnlInfoPldgDt;
-	
+
 	private String userRegRsnCode;
-	
+
 	private String userRegRsnDesc;
-	
+
 	private String sysPicYn;
-	
+
 	private String sysPicRoleDesc;
-	
+
 	private String pstnCode;
-	
+
 	private String acctNotchkYn;
-	
-	private String saveFctCde;
-	
+
+	private String saveFctCode;
+
 	private String photoUseYn;
 
 	public String getUserId() {
@@ -228,11 +233,11 @@ public class TbmSmUserDVO {
 		this.langCode = langCode;
 	}
 
-	public String getPwdErrCnt() {
+	public BigDecimal getPwdErrCnt() {
 		return pwdErrCnt;
 	}
 
-	public void setPwdErrCnt(String pwdErrCnt) {
+	public void setPwdErrCnt(BigDecimal pwdErrCnt) {
 		this.pwdErrCnt = pwdErrCnt;
 	}
 
@@ -332,11 +337,11 @@ public class TbmSmUserDVO {
 		this.useYn = useYn;
 	}
 
-	public String getEtlUpdDt() {
+	public Date getEtlUpdDt() {
 		return etlUpdDt;
 	}
 
-	public void setEtlUpdDt(String etlUpdDt) {
+	public void setEtlUpdDt(Date etlUpdDt) {
 		this.etlUpdDt = etlUpdDt;
 	}
 
@@ -378,6 +383,14 @@ public class TbmSmUserDVO {
 
 	public void setPwdValidDt(String pwdValidDt) {
 		this.pwdValidDt = pwdValidDt;
+	}
+
+	public String getEncptUserId() {
+		return encptUserId;
+	}
+
+	public void setEncptUserId(String encptUserId) {
+		this.encptUserId = encptUserId;
 	}
 
 	public String getPsnlInfoPldgDt() {
@@ -436,12 +449,12 @@ public class TbmSmUserDVO {
 		this.acctNotchkYn = acctNotchkYn;
 	}
 
-	public String getSaveFctCde() {
-		return saveFctCde;
+	public String getSaveFctCode() {
+		return saveFctCode;
 	}
 
-	public void setSaveFctCde(String saveFctCde) {
-		this.saveFctCde = saveFctCde;
+	public void setSaveFctCode(String saveFctCode) {
+		this.saveFctCode = saveFctCode;
 	}
 
 	public String getPhotoUseYn() {
