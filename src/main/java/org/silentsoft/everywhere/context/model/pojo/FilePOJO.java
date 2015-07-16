@@ -9,7 +9,7 @@ public class FilePOJO {
 	private String extension;
 	
 	private InputStream inputStream;
-
+	
 	public String getName() {
 		return name;
 	}

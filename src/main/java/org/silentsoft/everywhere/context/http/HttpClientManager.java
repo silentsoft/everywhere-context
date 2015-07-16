@@ -13,6 +13,8 @@ import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.util.EntityUtils;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
 import org.silentsoft.core.CommonConst;
 import org.silentsoft.core.util.JSONUtil;
 import org.silentsoft.everywhere.context.host.EverywhereException;
@@ -24,6 +26,13 @@ public class HttpClientManager {
 		POST,
 		MULTIPART
 	};
+	
+	static {
+		/**
+		 * WARNING : DO NOT REMOVE BELOW CODE ! THIS IS VERY IMPORTANT FOR PERFORMANCE !!!
+		 */
+		Logger.getLogger("org.apache.http").setLevel(Level.OFF);
+	}
 	
 	public static <T> T doGet(String uri, Class<T> returnType) throws EverywhereException {
 		return doAction(uri, null, returnType, RequestType.GET);
