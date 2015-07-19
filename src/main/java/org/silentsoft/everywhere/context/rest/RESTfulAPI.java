@@ -25,12 +25,24 @@ public class RESTfulAPI {
 		return uri + root + api;
 	}
 	
+	public static void doGet(String api) throws EverywhereException {
+		doGet(api, null);
+	}
+	
 	public static <T> T doGet(String api, Class<T> returnType) throws EverywhereException {
 		return HttpClientManager.doGet(getURI(api), returnType);
 	}
 	
+	public static void doPost(String api, Object param) throws EverywhereException {
+		doPost(api, param, null);
+	}
+	
 	public static <T> T doPost(String api, Object param, Class<T> returnType) throws EverywhereException {
 		return HttpClientManager.doPost(getURI(api), param, returnType);
+	}
+	
+	public static void doMultipart(String api, Object param) throws EverywhereException {
+		doMultipart(api, param, null);
 	}
 	
 	public static <T> T doMultipart(String api, Object param, Class<T> returnType) throws EverywhereException {
