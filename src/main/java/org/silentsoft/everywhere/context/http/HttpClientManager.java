@@ -1,8 +1,6 @@
 package org.silentsoft.everywhere.context.http;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.nio.charset.Charset;
 
 import org.apache.http.HttpEntity;
@@ -64,15 +62,17 @@ public class HttpClientManager {
 				}
 				case POST:
 				{
+					StringEntity stringEntity = new StringEntity(JSONUtil.ObjectToString(param), Charset.forName("UTF-8"));
+					stringEntity.setContentType("application/json; charset=UTF-8");
+					
 					httpPost = new HttpPost(uri);
-					httpPost.setEntity(new StringEntity(JSONUtil.ObjectToString(param)));
+					httpPost.setEntity(stringEntity);
 					httpResponse = HttpClientFactory.getHttpClient().execute(httpPost);
 					break;
 				}
 				case MULTIPART:
 				{
-					MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create();
-					multipartEntityBuilder.setCharset(Charset.forName("UTF-8"));
+					MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create().setCharset(Charset.forName("UTF-8"));
 					
 					if (param instanceof FilePOJO) {
 						FilePOJO filePOJO = (FilePOJO)param;
@@ -82,7 +82,9 @@ public class HttpClientManager {
 						
 						filePOJO.setInputStream(null);
 						
-						multipartEntityBuilder.addTextBody("json", JSONUtil.ObjectToString(filePOJO));
+						multipartEntityBuilder.addTextBody("json", JSONUtil.ObjectToString(filePOJO), ContentType.APPLICATION_JSON);
+					} else {
+						return null;
 					}
 					
 					httpPost = new HttpPost(uri);
@@ -94,20 +96,9 @@ public class HttpClientManager {
 			
 			httpEntity = httpResponse.getEntity();
 			if (httpEntity != null) {
-				BufferedReader br = new BufferedReader(new InputStreamReader(httpEntity.getContent()));
-				
-				StringBuffer result = new StringBuffer();
-				String line = "";
-				while ((line=br.readLine()) != null) {
-					result.append(line);
-				}
-				
-				if (result.toString().length() > 0) {
-					returnValue = (T)JSONUtil.JSONToObject(result.toString(), returnType);
-				}
-				
-				if (br != null) {
-					br.close();
+				String body = EntityUtils.toString(httpEntity, Charset.forName("UTF-8"));
+				if (body.length() > 0) {
+					returnValue = (T)JSONUtil.JSONToObject(body, returnType);
 				}
 			}
 			
