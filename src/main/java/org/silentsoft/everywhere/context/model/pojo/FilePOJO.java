@@ -8,6 +8,8 @@ public class FilePOJO {
 	
 	private String extension;
 	
+	private String userUniqueSeq;
+	
 	private InputStream inputStream;
 	
 	public String getName() {
@@ -24,6 +26,14 @@ public class FilePOJO {
 
 	public void setExtension(String extension) {
 		this.extension = extension;
+	}
+	
+	public String getUserUniqueSeq() {
+		return userUniqueSeq;
+	}
+	
+	public void setUserUniqueSeq(String userUniqueSeq) {
+		this.userUniqueSeq = userUniqueSeq;
 	}
 
 	public InputStream getInputStream() {

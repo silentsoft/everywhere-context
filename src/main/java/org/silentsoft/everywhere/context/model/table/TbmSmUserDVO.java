@@ -96,6 +96,8 @@ public class TbmSmUserDVO {
 	private String saveFctCode;
 
 	private String photoUseYn;
+	
+	private String uniqueSeq;
 
 	public String getUserId() {
 		return userId;
@@ -463,5 +465,13 @@ public class TbmSmUserDVO {
 
 	public void setPhotoUseYn(String photoUseYn) {
 		this.photoUseYn = photoUseYn;
+	}
+	
+	public String getUniqueSeq() {
+		return uniqueSeq;
+	}
+	
+	public void setUniqueSeq(String uniqueSeq) {
+		this.uniqueSeq = uniqueSeq;
 	}
 }
