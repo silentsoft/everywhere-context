@@ -15,7 +15,11 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.silentsoft.core.CommonConst;
 import org.silentsoft.core.util.JSONUtil;
+import org.silentsoft.core.util.ObjectUtil;
+import org.silentsoft.everywhere.context.BizConst;
+import org.silentsoft.everywhere.context.core.SharedMemory;
 import org.silentsoft.everywhere.context.host.EverywhereException;
+import org.silentsoft.everywhere.context.model.UserVO;
 import org.silentsoft.everywhere.context.model.pojo.FilePOJO;
 
 public class HttpClientManager {
@@ -77,12 +81,18 @@ public class HttpClientManager {
 					if (param instanceof FilePOJO) {
 						FilePOJO filePOJO = (FilePOJO)param;
 						
-						multipartEntityBuilder.addBinaryBody("binary", filePOJO.getInputStream(), ContentType.APPLICATION_OCTET_STREAM,
-								String.format("%s%s%s", filePOJO.getName(), CommonConst.DOT, filePOJO.getExtension()));
-						
-						filePOJO.setInputStream(null);
+						if (filePOJO.isDirectory() == false) {
+							multipartEntityBuilder.addBinaryBody("binary", filePOJO.getInputStream(), ContentType.APPLICATION_OCTET_STREAM,
+									String.format("%s%s%s", filePOJO.getName(), CommonConst.DOT, filePOJO.getExtension()));
+							
+							filePOJO.setInputStream(null);
+						}
 						
 						multipartEntityBuilder.addTextBody("json", JSONUtil.ObjectToString(filePOJO), ContentType.APPLICATION_JSON);
+						
+						UserVO userVO = new UserVO();
+						userVO.setUserId(ObjectUtil.toString(SharedMemory.getDataMap().get(BizConst.KEY_USER_ID)));
+						multipartEntityBuilder.addTextBody("user", JSONUtil.ObjectToString(userVO), ContentType.APPLICATION_JSON);
 					} else {
 						return null;
 					}

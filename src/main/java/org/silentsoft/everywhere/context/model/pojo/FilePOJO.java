@@ -4,6 +4,10 @@ import java.io.InputStream;
 
 public class FilePOJO {
 	
+	private String path;
+	
+	private boolean isDirectory;
+	
 	private String name;
 	
 	private String extension;
@@ -12,6 +16,22 @@ public class FilePOJO {
 	
 	private InputStream inputStream;
 	
+	public String getPath() {
+		return path;
+	}
+	
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	public boolean isDirectory() {
+		return isDirectory;
+	}
+
+	public void setDirectory(boolean isDirectory) {
+		this.isDirectory = isDirectory;
+	}
+
 	public String getName() {
 		return name;
 	}
