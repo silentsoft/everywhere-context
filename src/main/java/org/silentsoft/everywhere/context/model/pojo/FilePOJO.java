@@ -12,6 +12,8 @@ public class FilePOJO {
 	
 	private String extension;
 	
+	private String size;
+	
 	private String userUniqueSeq;
 	
 	private InputStream inputStream;
@@ -46,6 +48,14 @@ public class FilePOJO {
 
 	public void setExtension(String extension) {
 		this.extension = extension;
+	}
+	
+	public String getSize() {
+		return size;
+	}
+	
+	public void setSize(String size) {
+		this.size = size;
 	}
 	
 	public String getUserUniqueSeq() {
