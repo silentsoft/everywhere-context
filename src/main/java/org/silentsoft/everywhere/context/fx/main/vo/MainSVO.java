@@ -7,6 +7,10 @@ public class MainSVO {
 	private Notice001DVO notice001DVO;
 
 	private List<Notice002DVO> notice002DVOList;
+	
+	private Cloud001DVO cloud001DVO;
+	
+	private List<Cloud002DVO> cloud002DVOList;
 
 	public Notice001DVO getNotice001DVO() {
 		return notice001DVO;
@@ -22,5 +26,21 @@ public class MainSVO {
 
 	public void setNotice002DVOList(List<Notice002DVO> notice002dvoList) {
 		notice002DVOList = notice002dvoList;
+	}
+
+	public Cloud001DVO getCloud001DVO() {
+		return cloud001DVO;
+	}
+
+	public void setCloud001DVO(Cloud001DVO cloud001dvo) {
+		cloud001DVO = cloud001dvo;
+	}
+
+	public List<Cloud002DVO> getCloud002DVOList() {
+		return cloud002DVOList;
+	}
+
+	public void setCloud002DVOList(List<Cloud002DVO> cloud002dvoList) {
+		cloud002DVOList = cloud002dvoList;
 	}
 }
