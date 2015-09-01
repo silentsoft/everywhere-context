@@ -21,6 +21,7 @@ import org.silentsoft.everywhere.context.core.SharedMemory;
 import org.silentsoft.everywhere.context.host.EverywhereException;
 import org.silentsoft.everywhere.context.model.UserVO;
 import org.silentsoft.everywhere.context.model.pojo.FilePOJO;
+import org.silentsoft.everywhere.context.util.SecurityUtil;
 
 public class HttpClientManager {
 	private static enum RequestType {
@@ -61,6 +62,13 @@ public class HttpClientManager {
 				case GET:
 				{
 					httpGet = new HttpGet(uri);
+					
+					String userId = ObjectUtil.toString(SharedMemory.getDataMap().get(BizConst.KEY_USER_ID));
+					if (ObjectUtil.isNotEmpty(userId)) {
+						httpGet.addHeader("user", userId);
+						httpGet.addHeader("sequence", SecurityUtil.encodePassword(userId));
+					}
+					
 					httpResponse = HttpClientFactory.getHttpClient().execute(httpGet);
 					break;
 				}
@@ -71,6 +79,13 @@ public class HttpClientManager {
 					
 					httpPost = new HttpPost(uri);
 					httpPost.setEntity(stringEntity);
+					
+					String userId = ObjectUtil.toString(SharedMemory.getDataMap().get(BizConst.KEY_USER_ID));
+					if (ObjectUtil.isNotEmpty(userId)) {
+						httpPost.addHeader("user", userId);
+						httpPost.addHeader("sequence", SecurityUtil.encodePassword(userId));
+					}
+					
 					httpResponse = HttpClientFactory.getHttpClient().execute(httpPost);
 					break;
 				}
@@ -99,6 +114,13 @@ public class HttpClientManager {
 					
 					httpPost = new HttpPost(uri);
 					httpPost.setEntity(multipartEntityBuilder.build());
+					
+					String userId = ObjectUtil.toString(SharedMemory.getDataMap().get(BizConst.KEY_USER_ID));
+					if (ObjectUtil.isNotEmpty(userId)) {
+						httpPost.addHeader("user", userId);
+						httpPost.addHeader("sequence", SecurityUtil.encodePassword(userId));
+					}
+					
 					httpResponse = HttpClientFactory.getHttpClient().execute(httpPost);
 					break;
 				}

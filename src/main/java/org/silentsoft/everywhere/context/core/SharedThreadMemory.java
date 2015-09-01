@@ -9,17 +9,23 @@ public class SharedThreadMemory {
 	
 	private static Map<Long, DataMap> cache = new ConcurrentHashMap<Long, DataMap>();
 	
-	private static DataMap getDataMap() {
-		Long threadId = Thread.currentThread().getId();
-
-		if (cache.containsKey(threadId)) {
-			return cache.get(threadId);
+	public static void create() {
+		synchronized (cache) {
+			cache.put(Thread.currentThread().getId(), new DataMap());
 		}
-		
-		DataMap dataMap = new DataMap();
-		cache.put(threadId, dataMap);
-		
-		return dataMap;
+	}
+	
+	public static void delete() {
+		synchronized (cache) {
+			cache.remove(Thread.currentThread().getId());
+		}
+	}
+	
+	
+	private static DataMap getDataMap() {
+		synchronized (cache) {
+			return cache.get(Thread.currentThread().getId());
+		}
 	}
 	
 	public static Object get(String key) {
@@ -36,10 +42,6 @@ public class SharedThreadMemory {
 	
 	public static Object remove(String key) {
 		return getDataMap().remove(key);
-	}
-	
-	public static void removeAll() {
-		cache.remove(Thread.currentThread().getId());
 	}
 	
 }
