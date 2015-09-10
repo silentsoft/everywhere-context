@@ -11,6 +11,10 @@ public class MainSVO {
 	private Cloud001DVO cloud001DVO;
 	
 	private List<Cloud002DVO> cloud002DVOList;
+	
+	private CloudDirectoryInDVO cloudDirectoryInDVO;
+	
+	private List<CloudDirectoryOutDVO> cloudDirectoryOutDVOList;
 
 	public Notice001DVO getNotice001DVO() {
 		return notice001DVO;
@@ -43,4 +47,21 @@ public class MainSVO {
 	public void setCloud002DVOList(List<Cloud002DVO> cloud002dvoList) {
 		cloud002DVOList = cloud002dvoList;
 	}
+
+	public CloudDirectoryInDVO getCloudDirectoryInDVO() {
+		return cloudDirectoryInDVO;
+	}
+
+	public void setCloudDirectoryInDVO(CloudDirectoryInDVO cloudDirectoryInDVO) {
+		this.cloudDirectoryInDVO = cloudDirectoryInDVO;
+	}
+
+	public List<CloudDirectoryOutDVO> getCloudDirectoryOutDVOList() {
+		return cloudDirectoryOutDVOList;
+	}
+
+	public void setCloudDirectoryOutDVOList(List<CloudDirectoryOutDVO> cloudDirectoryOutDVOList) {
+		this.cloudDirectoryOutDVOList = cloudDirectoryOutDVOList;
+	}
+	
 }

@@ -18,6 +18,8 @@ public class BizConst {
 	public static final String EVENT_VIEW_MAIN = "EVENT_VIEW_MAIN";
 	public static final String EVENT_VIEW_MODIFY = "EVENT_VIEW_MODIFY";
 	
+	public static final String EVENT_REFRESH_CLOUD_DIRECTORY = "EVENT_REFRESH_CLOUD_DIRECTORY";
+	
 	public static final String KEY_APP_LOGIN_STATUS = "KEY_APP_LOGIN_STATUS";
 	
 	public static final String KEY_USER_ID = "KEY_USER_ID";
