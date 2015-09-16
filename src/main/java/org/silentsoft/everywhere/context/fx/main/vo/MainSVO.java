@@ -4,48 +4,28 @@ import java.util.List;
 
 public class MainSVO {
 	
-	private Notice001DVO notice001DVO;
+	private NoticeInDVO noticeInDVO;
 
-	private List<Notice002DVO> notice002DVOList;
-	
-	private Cloud001DVO cloud001DVO;
-	
-	private List<Cloud002DVO> cloud002DVOList;
+	private List<NoticeOutDVO> noticeOutDVOList;
 	
 	private CloudDirectoryInDVO cloudDirectoryInDVO;
 	
 	private List<CloudDirectoryOutDVO> cloudDirectoryOutDVOList;
 
-	public Notice001DVO getNotice001DVO() {
-		return notice001DVO;
+	public NoticeInDVO getNoticeInDVO() {
+		return noticeInDVO;
 	}
 
-	public void setNotice001DVO(Notice001DVO notice001dvo) {
-		notice001DVO = notice001dvo;
+	public void setNoticeInDVO(NoticeInDVO noticeInDVO) {
+		this.noticeInDVO = noticeInDVO;
 	}
 
-	public List<Notice002DVO> getNotice002DVOList() {
-		return notice002DVOList;
+	public List<NoticeOutDVO> getNoticeOutDVOList() {
+		return noticeOutDVOList;
 	}
 
-	public void setNotice002DVOList(List<Notice002DVO> notice002dvoList) {
-		notice002DVOList = notice002dvoList;
-	}
-
-	public Cloud001DVO getCloud001DVO() {
-		return cloud001DVO;
-	}
-
-	public void setCloud001DVO(Cloud001DVO cloud001dvo) {
-		cloud001DVO = cloud001dvo;
-	}
-
-	public List<Cloud002DVO> getCloud002DVOList() {
-		return cloud002DVOList;
-	}
-
-	public void setCloud002DVOList(List<Cloud002DVO> cloud002dvoList) {
-		cloud002DVOList = cloud002dvoList;
+	public void setNoticeOutDVOList(List<NoticeOutDVO> noticeOutDVOList) {
+		this.noticeOutDVOList = noticeOutDVOList;
 	}
 
 	public CloudDirectoryInDVO getCloudDirectoryInDVO() {

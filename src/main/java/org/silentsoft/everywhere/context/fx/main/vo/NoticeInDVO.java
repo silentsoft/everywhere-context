@@ -1,6 +1,6 @@
 package org.silentsoft.everywhere.context.fx.main.vo;
 
-public class Notice001DVO {
+public class NoticeInDVO {
 	
 	private String langCode;
 

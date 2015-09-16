@@ -1,6 +1,6 @@
 package org.silentsoft.everywhere.context.fx.main.vo;
 
-public class Notice002DVO {
+public class NoticeOutDVO {
 	
 	private String noticeDt;
 	
