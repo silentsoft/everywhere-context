@@ -18,6 +18,8 @@ public class FilePOJO {
 	
 	private InputStream inputStream;
 	
+	private byte[] bytes;
+	
 	public String getPath() {
 		return path;
 	}
@@ -72,5 +74,13 @@ public class FilePOJO {
 
 	public void setInputStream(InputStream inputStream) {
 		this.inputStream = inputStream;
+	}
+
+	public byte[] getBytes() {
+		return bytes;
+	}
+
+	public void setBytes(byte[] bytes) {
+		this.bytes = bytes;
 	}
 }
