@@ -14,8 +14,6 @@ public class FilePOJO {
 	
 	private String size;
 	
-	private String userUniqueSeq;
-	
 	private InputStream inputStream;
 	
 	private byte[] bytes;
@@ -58,14 +56,6 @@ public class FilePOJO {
 	
 	public void setSize(String size) {
 		this.size = size;
-	}
-	
-	public String getUserUniqueSeq() {
-		return userUniqueSeq;
-	}
-	
-	public void setUserUniqueSeq(String userUniqueSeq) {
-		this.userUniqueSeq = userUniqueSeq;
 	}
 
 	public InputStream getInputStream() {
