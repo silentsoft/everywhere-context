@@ -1,10 +1,14 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.silentsoft</groupId>
-  <artifactId>everywhere-context</artifactId>
-  <version>1.0.0</version>
-  
-  <repositories>
+<project
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.silentsoft</groupId>
+	<artifactId>everywhere-context</artifactId>
+	<version>1.0.0</version>
+
+	<repositories>
 		<repository>
 			<id>maven-repo</id>
 			<url>http://central.maven.org/maven2</url>
@@ -12,8 +16,9 @@
 	</repositories>
 
 	<properties>
-		<silentsoft.core.version>1.0.2</silentsoft.core.version>
-	
+		<silentsoft-core.version>1.0.2</silentsoft-core.version>
+		<silentsoft-io.version>1.0.0</silentsoft-io.version>
+
 		<slf4j.version>1.6.1</slf4j.version>
 		<apache.commons.daemon>1.0.10</apache.commons.daemon>
 		<apache.commons.io>2.4</apache.commons.io>
@@ -42,9 +47,21 @@
 		<dependency>
 			<groupId>org.silentsoft</groupId>
 			<artifactId>silentsoft-core</artifactId>
-			<version>${silentsoft.core.version}</version>
+			<version>${silentsoft-core.version}</version>
 		</dependency>
-	
+		<dependency>
+			<groupId>org.silentsoft</groupId>
+			<artifactId>silentsoft-io</artifactId>
+			<version>${silentsoft-io.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
