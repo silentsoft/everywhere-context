@@ -18,6 +18,7 @@
 	<properties>
 		<silentsoft-core.version>1.0.2</silentsoft-core.version>
 		<silentsoft-io.version>1.0.0</silentsoft-io.version>
+		<silentsoft-ui.version>1.0.0</silentsoft-ui.version>
 
 		<slf4j.version>1.6.1</slf4j.version>
 		<apache.commons.daemon>1.0.10</apache.commons.daemon>
@@ -53,6 +54,11 @@
 			<groupId>org.silentsoft</groupId>
 			<artifactId>silentsoft-io</artifactId>
 			<version>${silentsoft-io.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.silentsoft</groupId>
+			<artifactId>silentsoft-ui</artifactId>
+			<version>${silentsoft-ui.version}</version>
 		</dependency>
 
 		<dependency>
