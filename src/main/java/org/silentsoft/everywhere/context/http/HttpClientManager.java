@@ -4,21 +4,23 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 
 import org.apache.http.HttpEntity;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.entity.ContentType;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.mime.MultipartEntityBuilder;
 import org.apache.http.util.EntityUtils;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.silentsoft.core.CommonConst;
+import org.silentsoft.core.item.StoreItem;
+import org.silentsoft.core.pojo.FilePOJO;
 import org.silentsoft.core.util.JSONUtil;
 import org.silentsoft.core.util.ObjectUtil;
 import org.silentsoft.everywhere.context.BizConst;
 import org.silentsoft.everywhere.context.host.EverywhereException;
-import org.silentsoft.everywhere.context.model.pojo.FilePOJO;
 import org.silentsoft.everywhere.context.util.SecurityUtil;
 import org.silentsoft.io.memory.SharedMemory;
 
@@ -62,47 +64,40 @@ public class HttpClientManager {
 				{
 					httpGet = new HttpGet(uri);
 					
-					String userId = ObjectUtil.toString(SharedMemory.getDataMap().get(BizConst.KEY_USER_ID));
-					if (ObjectUtil.isNotEmpty(userId)) {
-						httpGet.addHeader("user", userId);
-						httpGet.addHeader("sequence", SecurityUtil.encodePassword(userId));
-					}
-					
-					httpResponse = HttpClientFactory.getHttpClient().execute(httpGet);
+					httpResponse = execute(httpGet);
 					break;
 				}
 				case POST:
 				{
-					StringEntity stringEntity = new StringEntity(JSONUtil.ObjectToString(param), Charset.forName("UTF-8"));
-					stringEntity.setContentType("application/json; charset=UTF-8");
-					
 					httpPost = new HttpPost(uri);
-					httpPost.setEntity(stringEntity);
 					
-					String userId = ObjectUtil.toString(SharedMemory.getDataMap().get(BizConst.KEY_USER_ID));
-					if (ObjectUtil.isNotEmpty(userId)) {
-						httpPost.addHeader("user", userId);
-						httpPost.addHeader("sequence", SecurityUtil.encodePassword(userId));
+					if (param != null) {
+						StringEntity stringEntity = new StringEntity(JSONUtil.ObjectToString(param), Charset.forName("UTF-8"));
+						stringEntity.setContentType("application/json; charset=UTF-8");
+						
+						httpPost.setEntity(stringEntity);
 					}
 					
-					httpResponse = HttpClientFactory.getHttpClient().execute(httpPost);
+					httpResponse = execute(httpPost);
 					break;
 				}
 				case MULTIPART:
 				{
 					MultipartEntityBuilder multipartEntityBuilder = MultipartEntityBuilder.create().setCharset(Charset.forName("UTF-8"));
 					
-					if (param instanceof FilePOJO) {
-						FilePOJO filePOJO = (FilePOJO)param;
+					if (param instanceof StoreItem) {
+						StoreItem storeItem = (StoreItem) param;
 						
-						if (filePOJO.isDirectory() == false) {
-							multipartEntityBuilder.addBinaryBody("binary", filePOJO.getInputStream(), ContentType.APPLICATION_OCTET_STREAM,
-									String.format("%s%s%s", filePOJO.getName(), CommonConst.DOT, filePOJO.getExtension()));
+						for (FilePOJO filePOJO : storeItem) {
+							if (filePOJO.getFile() != null) {
+								multipartEntityBuilder.addBinaryBody("binary", filePOJO.getFile(), ContentType.APPLICATION_OCTET_STREAM, filePOJO.getNameWithExtension());
+							}
 							
-							filePOJO.setInputStream(null);
+							filePOJO.setFile(null);
+							filePOJO.setBytes(null);
 						}
 						
-						multipartEntityBuilder.addTextBody("json", JSONUtil.ObjectToString(filePOJO), ContentType.APPLICATION_JSON);
+						multipartEntityBuilder.addTextBody("json", JSONUtil.ObjectToString(storeItem), ContentType.APPLICATION_JSON);
 					} else {
 						return null;
 					}
@@ -110,13 +105,7 @@ public class HttpClientManager {
 					httpPost = new HttpPost(uri);
 					httpPost.setEntity(multipartEntityBuilder.build());
 					
-					String userId = ObjectUtil.toString(SharedMemory.getDataMap().get(BizConst.KEY_USER_ID));
-					if (ObjectUtil.isNotEmpty(userId)) {
-						httpPost.addHeader("user", userId);
-						httpPost.addHeader("sequence", SecurityUtil.encodePassword(userId));
-					}
-					
-					httpResponse = HttpClientFactory.getHttpClient().execute(httpPost);
+					httpResponse = execute(httpPost);
 					break;
 				}
 			}
@@ -143,5 +132,15 @@ public class HttpClientManager {
 		}
 		
 		return returnValue;
+	}
+	
+	private static CloseableHttpResponse execute(HttpUriRequest request) throws IOException, ClientProtocolException {
+		String userId = ObjectUtil.toString(SharedMemory.getDataMap().get(BizConst.KEY_USER_ID));
+		if (ObjectUtil.isNotEmpty(userId)) {
+			request.addHeader("user", userId);
+			request.addHeader("sequence", SecurityUtil.encodePassword(userId));
+		}
+		
+		return HttpClientFactory.getHttpClient().execute(request);
 	}
 }
