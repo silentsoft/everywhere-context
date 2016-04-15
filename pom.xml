@@ -26,9 +26,6 @@
 		<apache.commons.lang>2.6</apache.commons.lang>
 		<apache.commons.codec>1.6</apache.commons.codec>
 		<spring-framework.version>4.0.6.RELEASE</spring-framework.version>
-		<jackson.version>2.4.2</jackson.version>
-		<jason.version>20141113</jason.version>
-		<apache-http-client.version>4.3.6</apache-http-client.version>
 	</properties>
 
 	<build>
@@ -130,37 +127,6 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring-framework.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>${jackson.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.json</groupId>
-			<artifactId>json</artifactId>
-			<version>${jason.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpclient</artifactId>
-			<version>${apache-http-client.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.apache.httpcomponents</groupId>
-			<artifactId>httpmime</artifactId>
-			<version>${apache-http-client.version}</version>
 		</dependency>
 	</dependencies>
 </project>
