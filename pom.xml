@@ -16,16 +16,31 @@
 	</repositories>
 
 	<properties>
-		<silentsoft-core.version>1.0.2</silentsoft-core.version>
-		<silentsoft-io.version>1.0.0</silentsoft-io.version>
-		<silentsoft-ui.version>1.0.0</silentsoft-ui.version>
-
-		<slf4j.version>1.6.1</slf4j.version>
+		<!-- Generic properties (Warning : DO NOT REMOVE) -->
+		<java.version>1.8</java.version>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		
+		<!-- Silentsoft -->
+		<silentsoft.core.version>1.0.2</silentsoft.core.version>
+		
+		<!-- Apache -->
 		<apache.commons.daemon>1.0.10</apache.commons.daemon>
-		<apache.commons.io>2.4</apache.commons.io>
 		<apache.commons.lang>2.6</apache.commons.lang>
+		<apache.commons.io>2.4</apache.commons.io>
 		<apache.commons.codec>1.6</apache.commons.codec>
+		
+		<!-- Spring -->
+		<spring-security.version>3.0.5.RELEASE</spring-security.version>
 		<spring-framework.version>4.0.6.RELEASE</spring-framework.version>
+		
+		<!-- Logging -->
+		<slf4j.version>1.7.5</slf4j.version>
+
+		<!-- Test -->
+		<junit.version>4.8.1</junit.version>
 	</properties>
 
 	<build>
@@ -45,37 +60,9 @@
 		<dependency>
 			<groupId>org.silentsoft</groupId>
 			<artifactId>silentsoft-core</artifactId>
-			<version>${silentsoft-core.version}</version>
+			<version>${silentsoft.core.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.silentsoft</groupId>
-			<artifactId>silentsoft-io</artifactId>
-			<version>${silentsoft-io.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.silentsoft</groupId>
-			<artifactId>silentsoft-ui</artifactId>
-			<version>${silentsoft-ui.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.8.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>commons-daemon</groupId>
 			<artifactId>commons-daemon</artifactId>
@@ -100,7 +87,7 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-core</artifactId>
-			<version>3.0.5.RELEASE</version>
+			<version>${spring-security.version}</version>
 		</dependency>
 
 		<dependency>
@@ -127,6 +114,24 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
 			<version>${spring-framework.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junit.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>
