@@ -1,8 +1,8 @@
-package org.silentsoft.everywhere.context.fx.main.vo;
+package org.silentsoft.everywhere.context.fx.cloud.vo;
 
 import java.util.List;
 
-public class MainSVO {
+public class CloudSVO {
 	
 	private NoticeInDVO noticeInDVO;
 

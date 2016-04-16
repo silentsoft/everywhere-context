@@ -1,4 +1,4 @@
-package org.silentsoft.everywhere.context.fx.main.vo;
+package org.silentsoft.everywhere.context.fx.cloud.vo;
 
 public class CloudDirectoryInDVO {
 	
