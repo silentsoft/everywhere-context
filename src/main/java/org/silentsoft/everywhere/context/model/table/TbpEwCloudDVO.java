@@ -2,15 +2,13 @@ package org.silentsoft.everywhere.context.model.table;
 
 public class TbpEwCloudDVO {
 
-	private String userId;
+	private String userSeq;
 	
-	private String filePath;
+	private String relativePath;
 	
 	private String directoryYn;
 	
-	private String fileName;
-	
-	private String fileSize;
+	private String storeKey;
 	
 	private String fstRegDt;
 	
@@ -24,20 +22,20 @@ public class TbpEwCloudDVO {
 	
 	private String useYn;
 
-	public String getUserId() {
-		return userId;
+	public String getUserSeq() {
+		return userSeq;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setUserSeq(String userSeq) {
+		this.userSeq = userSeq;
 	}
 
-	public String getFilePath() {
-		return filePath;
+	public String getRelativePath() {
+		return relativePath;
 	}
 
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setRelativePath(String relativePath) {
+		this.relativePath = relativePath;
 	}
 
 	public String getDirectoryYn() {
@@ -48,20 +46,12 @@ public class TbpEwCloudDVO {
 		this.directoryYn = directoryYn;
 	}
 
-	public String getFileName() {
-		return fileName;
+	public String getStoreKey() {
+		return storeKey;
 	}
 
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	public String getFileSize() {
-		return fileSize;
-	}
-
-	public void setFileSize(String fileSize) {
-		this.fileSize = fileSize;
+	public void setStoreKey(String storeKey) {
+		this.storeKey = storeKey;
 	}
 
 	public String getFstRegDt() {
@@ -111,4 +101,5 @@ public class TbpEwCloudDVO {
 	public void setUseYn(String useYn) {
 		this.useYn = useYn;
 	}
+	
 }

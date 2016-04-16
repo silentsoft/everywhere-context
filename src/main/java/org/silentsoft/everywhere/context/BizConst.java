@@ -23,8 +23,8 @@ public class BizConst {
 	public static final String KEY_APP_LOGIN_STATUS = "KEY_APP_LOGIN_STATUS";
 	
 	public static final String KEY_USER_ID = "KEY_USER_ID";
-	public static final String KEY_USER_UNIQUE_SEQ = "KEY_USER_UNIQUE_SEQ";
-	public static final String KEY_USER_NM = "KEY_USER_NM";
+	public static final String KEY_USER_SEQ = "KEY_USER_SEQ";
+	public static final String KEY_USER_NAME = "KEY_USER_NAME";
 	public static final String KEY_USER_EMAIL = "KEY_USER_EMAIL";
 	public static final String KEY_USER_FNL_ACCS_DT = "KEY_USER_FNL_ACCS_DT";
 	
