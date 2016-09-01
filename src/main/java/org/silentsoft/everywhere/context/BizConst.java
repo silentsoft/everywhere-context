@@ -13,6 +13,8 @@ public class BizConst {
 	public static final String INI_SERVER_URI = "URI";
 	public static final String INI_SERVER_ROOT = "ROOT";
 	
+	public static final String EVENT_NOTI_FAKE = "EVENT_NOTI_FAKE";
+	
 	public static final String EVENT_VIEW_REGISTER = "EVENT_VIEW_REGISTER";
 	public static final String EVENT_VIEW_LOGIN = "EVENT_VIEW_LOGIN";
 	public static final String EVENT_VIEW_INDEX = "EVENT_VIEW_INDEX";
